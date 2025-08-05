@@ -3,11 +3,11 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
 
-    ORDER_BUTTON_UP = (By.XPATH, "//button[@class='Button_Button__ra12g' and text()='Заказать']") # кнопка Заказать наверху страницы
+    ORDER_BUTTON_UP = (By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and text()='Заказать']") # кнопка Заказать наверху страницы
     ORDER_BUTTON_DOWN = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM']") # кнопка Заказать внизу страницы
 
-    LOGO_SCOOTER = (By.XPATH, ".//a[@class = 'Header_LogoScooter__3lsAR']") # кнопка-логотип Самокат
-    LOGO_YANDEX = (By.XPATH, ".//a[@class = 'Header_LogoYandex__3TSOI']") # кнопка-логотип Яндекс
+    LOGO_SCOOTER = (By.CLASS_NAME, "Header_LogoScooter__3lsAR") # кнопка-логотип Самокат
+    LOGO_YANDEX = (By.CLASS_NAME, "Header_LogoYandex__3TSOI") # кнопка-логотип Яндекс
 
     # раздел FAQ "Вопросы о важном", ВОПРОСЫ
     FAQ_QUESTIONS = {
