@@ -1,4 +1,3 @@
-import pytest
 import allure
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,6 +9,37 @@ class BasePage:
         self.driver = driver
 
     @allure.step("Подождать видимость элемента")
-    def wait_for_element(self, locator, timeout=10):
+    def wait_for_element_visible(self, locator, timeout = 5):
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
+    @allure.step("Кликнуть на элемент")
+    def click_on_element(self, locator):
+        self.driver.find_element(*locator).click()
+
+    @allure.step("Скролл до элемента")
+    def scroll_to_element(self, locator):
+        element = self.driver.find_element(*locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    @allure.step("Ввести текст в поле ввода")
+    def send_keys_to_element(self, locator, keys, timeout = 5):
+        element = self.wait_for_element_visible(locator, timeout)
+        element.clear()
+        element.send_keys(keys)
+
+    @allure.step("Получить текст элемента")
+    def get_text_of_element(self, locator, timeout = 5):
+        element = self.wait_for_element_visible(locator, timeout)
+        return element.text
+
+    @allure.step("Переключиться на другую вкладку")
+    def switch_to_another_tab(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
+
+    @allure.step("Получить текущий адрес страницы")
+    def get_current_url(self):
+        return self.driver.current_url
+
+    @allure.step("Получить текущий адрес страницы")
+    def is_element_visible(self, locator):
+        return self.driver.find_element(*locator).is_displayed()
