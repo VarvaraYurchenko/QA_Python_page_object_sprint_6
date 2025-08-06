@@ -32,6 +32,10 @@ class BasePage:
         element = self.wait_for_element_visible(locator, timeout)
         return element.text
 
+    @allure.step("Открыть страницу")
+    def open_page(self, url):
+        self.driver.get(url)
+
     @allure.step("Переключиться на другую вкладку")
     def switch_to_another_tab(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
@@ -40,6 +44,10 @@ class BasePage:
     def get_current_url(self):
         return self.driver.current_url
 
-    @allure.step("Получить текущий адрес страницы")
+    @allure.step("Подождать прогрузку страницы")
+    def wait_for_url_to_contain(self, url, timeout = 5):
+        return WebDriverWait(self.driver, timeout).until(EC.url_contains(url))
+
+    @allure.step("Проверить, что элемент отображается")
     def is_element_visible(self, locator):
         return self.driver.find_element(*locator).is_displayed()

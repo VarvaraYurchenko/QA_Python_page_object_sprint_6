@@ -1,6 +1,8 @@
 import allure
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
+from curl import Urls
+
 
 class MainPage(BasePage):
     @allure.step("Кликнуть на кнопку Заказать наверху страницы")
@@ -30,3 +32,16 @@ class MainPage(BasePage):
         self.wait_for_element_visible(MainPageLocators.FAQ_ANSWERS[answer_number])
         return self.get_text_of_element(MainPageLocators.FAQ_ANSWERS[answer_number])
 
+    @allure.step("Открыть главную страницу")
+    def open_main_page(self):
+        self.open_page(Urls.MAIN_URL)
+
+    @allure.step("Проверить, что главная страница открыта")
+    def is_main_page_opened(self):
+        return self.get_current_url() == Urls.MAIN_URL
+
+    @allure.step("Переключиться на вкладку Дзена и дождаться загрузки")
+    def switch_to_dzen_and_wait(self):
+        self.switch_to_another_tab()
+        self.wait_for_url_to_contain("dzen.ru")
+        return self.get_current_url()
