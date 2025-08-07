@@ -9,6 +9,8 @@ class MainPageLocators:
     LOGO_SCOOTER = (By.CLASS_NAME, "Header_LogoScooter__3lsAR") # кнопка-логотип Самокат
     LOGO_YANDEX = (By.CLASS_NAME, "Header_LogoYandex__3TSOI") # кнопка-логотип Яндекс
 
+    COOKIE_BANNER_CLOSE_BUTTON = (By.ID, "rcc-confirm-button") # кнопка закрытия баннера куки
+
     # раздел FAQ "Вопросы о важном", ВОПРОСЫ
     FAQ_QUESTIONS = {
         1: (By.ID, "accordion__heading-0"),
