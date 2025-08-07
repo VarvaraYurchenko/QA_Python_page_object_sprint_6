@@ -7,7 +7,7 @@ class TestData:
         "phone": "+79166661926",
         "delivery_date": "12.12.2025",
         "rental_period": "сутки",
-        "scooter_colour": "black",
+        "scooter_color": "black",
         "comment": "На звонки с незнакомых номеров не отвечаю"
     }
 
@@ -19,7 +19,7 @@ class TestData:
         "phone": "+79166661629",
         "delivery_date": "31.10.2025",
         "rental_period": "двое суток",
-        "scooter_colour": "grey",
+        "scooter_color": "grey",
         "comment": "Добавьте розовый цвет самоката. С блёстками"
     }
 

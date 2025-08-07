@@ -12,6 +12,7 @@ class MainPage(BasePage):
     @allure.step("Кликнуть на кнопку Заказать внизу страницы")
     def click_on_order_button_down(self):
         self.scroll_to_element(MainPageLocators.ORDER_BUTTON_DOWN)
+        self.wait_for_element_clickable(MainPageLocators.ORDER_BUTTON_DOWN)
         self.click_on_element(MainPageLocators.ORDER_BUTTON_DOWN)
 
     @allure.step("Кликнуть на логотип Самокат")

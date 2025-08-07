@@ -31,6 +31,7 @@ class OrderPage(BasePage):
 
     @allure.step("Заполнить первую форму: Для кого самокат")
     def fill_first_form(self, data):
+        self.wait_for_element_visible(OrderPageLocators.NAME)
         self.send_keys_to_element(OrderPageLocators.NAME, data["name"])
         self.send_keys_to_element(OrderPageLocators.LAST_NAME, data["last_name"])
         self.send_keys_to_element(OrderPageLocators.ADDRESS, data["address"])
@@ -41,6 +42,7 @@ class OrderPage(BasePage):
     @allure.step("Заполнить вторую форму: Про аренду")
     def fill_second_form(self, data):
         self.send_keys_to_element(OrderPageLocators.DELIVERY_DATE, data["delivery_date"])
+        self.click_on_element(OrderPageLocators.HEADER_ORDER)
         self.select_rental_period(data["rental_period"])
         self.select_scooter_color(data["scooter_color"])
         self.send_keys_to_element(OrderPageLocators.COMMENT, data["comment"])
