@@ -8,7 +8,7 @@ from data import TestData
 @allure.feature("Заказ самоката")
 @allure.story("Позитивный сценарий: заполнение формы и подтверждение")
 class TestOrderScooter:
-    @allure.title("Заказ: {user['name']} {user['last_name']} — кнопка '{button}'")
+    @allure.title("Позитивный сценарий заказа самоката")
     @pytest.mark.parametrize("user, button",
                              [(TestData.USER_1, "up"),
                               (TestData.USER_2, "down")])

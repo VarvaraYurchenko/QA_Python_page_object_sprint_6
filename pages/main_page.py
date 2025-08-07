@@ -46,7 +46,6 @@ class MainPage(BasePage):
     def switch_to_dzen_and_wait(self):
         self.switch_to_another_tab()
         self.wait_for_url_to_contain("dzen.ru")
-        return self.get_current_url()
 
     @allure.step("Закрыть баннер куки")
     def close_cookie_banner(self):
