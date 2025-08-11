@@ -1,4 +1,7 @@
 class TestData:
+
+    SUCCESS_MESSAGE = "Заказ оформлен"
+
     USER_1 = {
         "name": "Маттео",
         "last_name": "Риддл",

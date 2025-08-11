@@ -9,24 +9,25 @@ from data import TestData
 @allure.story("Позитивный сценарий: заполнение формы и подтверждение")
 class TestOrderScooter:
     @allure.title("Позитивный сценарий заказа самоката")
-    @pytest.mark.parametrize("user, button",
-                             [(TestData.USER_1, "up"),
-                              (TestData.USER_2, "down")])
-    def test_order_scooter_with_order_buttons_positive_flow(self, driver, user, button):
+    @pytest.mark.parametrize(
+        "user, click_order_btn",
+        [
+            (TestData.USER_1, MainPage.click_on_order_button_up),
+            (TestData.USER_2, MainPage.click_on_order_button_down)
+        ]
+    )
+    def test_order_scooter_with_order_buttons_positive_flow(self, driver, user, click_order_btn):
         main_page = MainPage(driver)
         order_page = OrderPage(driver)
 
         main_page.open_main_page()
         main_page.close_cookie_banner()
 
-        if button == "up":
-            main_page.click_on_order_button_up()
-        else:
-            main_page.click_on_order_button_down()
+        click_order_btn(main_page)
 
         order_page.fill_first_form(user)
         order_page.fill_second_form(user)
 
         order_page.confirm_order()
         assert order_page.is_order_placed()
-        assert "Заказ оформлен" in order_page.get_success_message()
+        assert TestData.SUCCESS_MESSAGE in order_page.get_success_message()
